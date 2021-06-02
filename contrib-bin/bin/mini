@@ -1,0 +1,3 @@
+#!/bin/bash
+minicom -b BAUD --color=on -D /dev/DEVICE
+

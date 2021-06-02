@@ -1,0 +1,16 @@
+#!/bin/sh
+case "$1" in
+        stop)
+        ;;
+        start)
+          echo "Installing audio modules"
+	  /bin/load-modules.sh snd snd-bcm2835 snd-usb-audio
+          chmod -R 660 /dev/snd/
+          chmod 755 /dev/snd/
+          chown -R root:audio /dev/snd
+	;;
+        *)
+          echo 'Usage: /etc/init.d/audio {start|stop}'
+          exit 3
+        ;;
+esac

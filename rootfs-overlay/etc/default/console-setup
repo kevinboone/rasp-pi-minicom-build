@@ -1,0 +1,8 @@
+ACTIVE_CONSOLES="/dev/tty[1-6]"
+
+CHARMAP="UTF-8"
+
+CODESET="guess"
+FONTFACE="Terminus"
+FONTSIZE="24x12"
+

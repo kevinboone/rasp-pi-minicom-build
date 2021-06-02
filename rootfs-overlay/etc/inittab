@@ -1,0 +1,14 @@
+si::sysinit:/etc/rc.d/startup.sh
+id:1:initdefault:
+
+
+1:12345:respawn:/sbin/getty XXX -l /bin/mini tty1
+2:12345:respawn:/sbin/getty XXX tty2
+3:12345:respawn:/sbin/getty XXX tty3
+
+l0:0:wait:/etc/init.d/rc 0
+l1:1:wait:/etc/init.d/rc 1
+
+sd::shutdown:/etc/rc.d/shutdown
+ca::ctrlaltdel:/sbin/reboot
+

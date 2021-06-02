@@ -1,0 +1,12 @@
+#!/bin/sh
+case "$1" in
+        stop)
+        ;;
+        start)
+          onetime_datetime.sh &
+	;;
+        *)
+          echo 'Usage: /etc/init.d/onetime_datetime {start|stop}'
+          exit 3
+        ;;
+esac

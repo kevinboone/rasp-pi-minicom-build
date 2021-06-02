@@ -1,0 +1,22 @@
+#!/bin/sh
+if [ -f /sbin/wpa_supplicant ]; then
+    case "$1" in
+        stop)
+          killall wpa_supplicant
+        ;;
+        start)
+          modprobe brcmutil
+          modprobe brcmfmac
+          mkdir -p /var/run/wpa_supplicant
+          # Not sure how much delay is required here -- if none, then 
+          #  wpa_supp tries to start before the adapter is in a stable
+          #  state
+          sleep 1
+          wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
+	;;
+        *)
+            echo 'Usage: /etc/init.d/wpa_supplicant {start|stop}'
+            exit 3
+            ;;
+    esac
+fi

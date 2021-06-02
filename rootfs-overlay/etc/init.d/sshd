@@ -1,0 +1,14 @@
+#!/bin/sh
+case "$1" in
+        stop)
+          killall sshd
+        ;;
+        start)
+          mkdir /run/sshd
+          /usr/sbin/sshd -h /etc/ssh/id_rsa 
+	;;
+        *)
+          echo 'Usage: /etc/init.d/sshd {start|stop}'
+          exit 3
+        ;;
+esac

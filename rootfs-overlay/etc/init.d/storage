@@ -1,0 +1,17 @@
+#!/bin/sh
+
+DEV=/dev/sda
+MOUNTPOINT=/mnt	
+
+case "$1" in
+        stop)
+          umount $MOUNTPOINT 
+        ;;
+        start)
+	  mount -o sync,user=1000 $DEV $MOUNTPOINT
+	;;
+        *)
+          echo 'Usage: /etc/init.d/storage {start|stop}'
+          exit 3
+        ;;
+esac

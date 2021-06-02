@@ -1,0 +1,20 @@
+# wpa_supplicant must be started before running this script
+#!/bin/sh
+if [ -f /etc/CONFIG.sh ]; then
+    case "$1" in
+        stop)
+          ifconfig wlan0 down 
+        ;;
+        start)
+          . /etc/CONFIG.sh
+          wpa_cli -i wlan0 add_network >& /dev/null
+          wpa_cli -i wlan0 set_network 0 ssid \"$SSID\"  >& /dev/null
+          wpa_cli -i wlan0 set_network 0 psk \"$PSK\"  >& /dev/null
+          wpa_cli -i wlan0 enable_network 0 >& /dev/null
+	;;
+        *)
+            echo 'Usage: /etc/init.d/wifi {start|stop}'
+            exit 3
+            ;;
+    esac
+fi
